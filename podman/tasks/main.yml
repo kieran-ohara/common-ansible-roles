@@ -1,0 +1,17 @@
+---
+- name: Install Podman
+  package:
+    name: podman
+    state: present
+  become: yes
+  tags:
+    - podman
+
+- name: Enable Podman at Startup.
+  service:
+    name: podman
+    enabled: yes
+    state: started
+  become: yes
+  tags:
+    - podman
