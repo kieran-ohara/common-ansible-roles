@@ -1,0 +1,34 @@
+---
+- name: Add repository
+  yum_repository:
+    name: docker-ce
+    description: Docker CE
+    baseurl: https://download.docker.com/linux/centos/$releasever/source/stable
+    enabled: true
+    gpgcheck: true
+    gpgkey: https://download.docker.com/linux/centos/gpg
+  become: true
+  tags:
+    - docker
+
+- name: Install Docker
+  package:
+    name: "{{ item }}"
+    state: present
+  become: true
+  loop:
+    - containerd.io
+    - docker-ce
+    - docker-ce-cli
+    - docker-compose-plugin
+  tags:
+    - docker
+
+- name: Enable Docker at Startup.
+  service:
+    name: docker
+    enabled: true
+    state: started
+  become: true
+  tags:
+    - docker
