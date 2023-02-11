@@ -1,12 +1,11 @@
 ---
 - name: Add repository
-  yum_repository:
-    name: docker-ce
-    description: Docker CE
-    baseurl: https://download.docker.com/linux/centos/$releasever/source/stable
-    enabled: true
-    gpgcheck: true
-    gpgkey: https://download.docker.com/linux/centos/gpg
+  copy:
+    src: docker-ce.repo
+    dest: /etc/yum.repos.d/docker-ce.repo
+    owner: root
+    group: root
+    mode: 0644
   become: true
   tags:
     - docker
