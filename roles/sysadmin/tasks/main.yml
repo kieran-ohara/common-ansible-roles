@@ -1,0 +1,36 @@
+---
+- name: Install EPEL release package
+  package:
+    name: epel-release
+    state: present
+  become: true
+  tags:
+    - sysadmin
+
+- name: Install Utils
+  package:
+    name:
+      - htop
+      - ncdu
+      - tmux
+      - tree
+    state: latest
+  become: true
+  tags:
+    - sysadmin
+
+- name: Get Alacritty Terminfo
+  get_url:
+    url: https://raw.githubusercontent.com/alacritty/alacritty/master/extra/alacritty.info
+    dest: /tmp
+  tags:
+    - sysadmin
+
+- name: Install Alacritty Terminfo
+  command: tic -xe alacritty,alacritty-direct alacritty.info
+  args:
+    chdir: /tmp
+    creates: /usr/share/terminfo/a/alacritty
+  become: true
+  tags:
+    - sysadmin
