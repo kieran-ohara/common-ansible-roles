@@ -14,6 +14,7 @@
       - ncdu
       - tmux
       - tree
+      - traceroute
     state: latest
   become: true
   tags:
