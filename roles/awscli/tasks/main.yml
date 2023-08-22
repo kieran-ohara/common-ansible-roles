@@ -8,11 +8,21 @@
   tags:
     - awscli
 
-- name: Download AWSCLI Installer
+- name: Download AWSCLI Installer x86_64
   unarchive:
     src: https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip
     dest: /tmp
     remote_src: true
+  when: ansible_architecture == "x86_64"
+  tags:
+    - awscli
+
+- name: Download AWSCLI Installer aarch
+  unarchive:
+    src: https://awscli.amazonaws.com/awscli-exe-linux-aarch64.zip
+    dest: /tmp
+    remote_src: true
+  when: ansible_architecture == "aarch64"
   tags:
     - awscli
 
