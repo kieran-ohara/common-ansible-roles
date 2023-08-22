@@ -5,7 +5,7 @@
     state: present
   become: true
   tags:
-    - sysadmin
+    - sys_admin
 
 - name: Install Utils
   package:
@@ -18,14 +18,14 @@
     state: latest
   become: true
   tags:
-    - sysadmin
+    - sys_admin
 
 - name: Get Alacritty Terminfo
   get_url:
     url: https://raw.githubusercontent.com/alacritty/alacritty/master/extra/alacritty.info
     dest: /tmp
   tags:
-    - sysadmin
+    - sys_admin
 
 - name: Install Alacritty Terminfo
   command: tic -xe alacritty,alacritty-direct alacritty.info
@@ -34,4 +34,4 @@
     creates: /usr/share/terminfo/a/alacritty
   become: true
   tags:
-    - sysadmin
+    - sys_admin

@@ -3,4 +3,4 @@
   command: /usr/bin/dnf clean all
   become: true
   tags:
-    - cleanup
+    - clean_up
