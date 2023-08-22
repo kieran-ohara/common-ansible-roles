@@ -1,0 +1,3 @@
+---
+dependencies:
+  - role: kieranohara.common_ansible_roles.aws_cli
