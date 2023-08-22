@@ -7,7 +7,7 @@
   when: ansible_architecture == "x86_64"
   become: true
   tags:
-    - aws
+    - aws_ssm
 
 - name: Install SSM Agent aarch
   dnf:
@@ -17,7 +17,7 @@
   when: ansible_architecture == "aarch64"
   become: true
   tags:
-    - aws
+    - aws_ssm
 
 - name: Enable SSM Agent
   service:
@@ -26,4 +26,4 @@
     state: started
   become: true
   tags:
-    - aws
+    - aws_ssm

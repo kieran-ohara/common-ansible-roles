@@ -6,7 +6,7 @@
     state: latest
   become: true
   tags:
-    - awscli
+    - aws_cli
 
 - name: Download AWSCLI Installer x86_64
   unarchive:
@@ -15,7 +15,7 @@
     remote_src: true
   when: ansible_architecture == "x86_64"
   tags:
-    - awscli
+    - aws_cli
 
 - name: Download AWSCLI Installer aarch
   unarchive:
@@ -24,7 +24,7 @@
     remote_src: true
   when: ansible_architecture == "aarch64"
   tags:
-    - awscli
+    - aws_cli
 
 - name: Install AWSCLI
   command: /tmp/aws/install
@@ -32,4 +32,4 @@
     creates: /usr/local/aws-cli
   become: true
   tags:
-    - awscli
+    - aws_cli
